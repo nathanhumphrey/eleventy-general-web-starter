@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ renderData.title or title or metadata.title }}</title>
+    <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    {%- if env.mode == "dev" -%}
+      <link rel="stylesheet" href="{{ '/assets/css/styles.css' | url }}">
+    {%- else -%}
+      <link rel="stylesheet" href="{{ '/assets/css/styles.css' | digest | url }}">
+    {%- endif -%}
+    {%- if env.mode == "dev" -%}
+      <script src="{{'/assets/js/main.js' | url }}" defer></script>
+    {%- else -%}
+      <script src="{{'/assets/js/main.js' | digest | url }}" defer></script>
+    {%- endif -%}
+  </head>
+  <body>
+    <div class="container" id="top">
+      <header class="page-header">
+        <p class="home">
+          <a href="{{ '/' | url }}" title="Your company - Home">Your Company</a>
+        </p>
+        <nav class="page-nav">
+          <h2 class="visually-hidden">Main Navigation Menu</h2>
+          {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({
+            listClass: "nav",
+            listItemClass: "nav-item",
+            activeListItemClass: "nav-item-active",
+            activeKey: eleventyNavigation.key
+          }) | safe }}
+        </nav>
+      </header>
+
+      <main>
+        {{ content | safe }}
+      </main>
+
+      <footer class="page-footer">
+        <p>&copy; Your Company</p>
+      </footer>
+    </div>
+  </body>
+</html>

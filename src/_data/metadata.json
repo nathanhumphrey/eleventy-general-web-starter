@@ -1,0 +1,9 @@
+{
+  "title": "Your Company",
+  "url": "https://yourcompany.com/",
+  "description": "Your company descriptions",
+  "author": {
+    "name": "Your Name",
+    "email": "you@yourcompany.com"
+  }
+}

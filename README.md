@@ -1,0 +1,1 @@
+Change the build from dev to prod in the _data/env.mjs for production builds.

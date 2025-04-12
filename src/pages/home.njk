@@ -1,0 +1,23 @@
+---
+layout: _layouts/base.njk
+title: A new title
+description: A new description
+permalink: /
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+<section>
+  <div class="welcome">
+    <h1 class="title">{{ metadata.title }}</h1>
+    <p class="description">{{ metadata.description }}</p>
+  </div>
+  <h2>Latest Posts</h2>
+  <p>
+    {%- for post in collections.post -%}
+      <li>{{ post.data.title }}</li>
+    {%- endfor -%}
+    <a href="{{ '/posts/' | url }}">See all posts</a>
+  </p>
+</section>
